@@ -6,6 +6,7 @@ interface DropdownProps {
   options: string[];
   selected: string;
   onChange: (value: string) => void;
+
   width?: string;
   height?: string;
   divClasses?: string; // Wrapper div classes
@@ -13,6 +14,7 @@ interface DropdownProps {
   menuClasses?: string; // Dropdown menu classes
   optionClasses?: string; // Option classes
   error?: string;
+  onOpen?: () => void;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
@@ -26,12 +28,16 @@ const Dropdown: React.FC<DropdownProps> = ({
   menuClasses = "",
   optionClasses = "",
   error = "",
+  onOpen,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
+    if (!isOpen && onOpen) {
+      onOpen();
+    }
   };
 
   const handleOptionClick = (value: string) => {
@@ -65,9 +71,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         type="button"
         onClick={handleButtonClick}
         className={`flex items-center justify-between w-full px-4 py-2 border rounded-lg focus:outline-none ${buttonClasses} ${
-          error
-            ? "border-red-500 focus:border-red-500"
-            : "border-black focus:border-green-500"
+          error ? "border-red-500 focus:border-red-500" : "border-black"
         }`}
         style={{ height }}
       >

@@ -13,6 +13,9 @@ import { getItemsApi } from "@/store/app/admin/DashboardSlice";
 import Image from "next/image";
 import RecycleLoader from "@/components/Common/Loader";
 import { Skeleton } from "@mui/material";
+// import { Edit } from "@mui/icons-material";
+import EditIcon from "@mui/icons-material/Edit";
+import EditMaterialForm from "@/components/EditMaterialForm/EditMaterialForm";
 
 interface ItemsType {
   activeUser: number;
@@ -35,14 +38,14 @@ interface ItemsType {
 const Dashboard = () => {
   const dispatch = useDispatch();
   const [items, setItems] = useState<ItemsType>();
-
+  const [openEditMaterial, setOpenEditMaterial] = useState(false);
+  const getData = async () => {
+    const result = await dispatch(getItemsApi());
+    console.log(result, "item, at the dashbord useeffect");
+    setItems(result);
+    console.log(result);
+  };
   useEffect(() => {
-    const getData = async () => {
-      const result = await dispatch(getItemsApi());
-      console.log(result, "item, at th edashbord useeffect");
-      setItems(result);
-      console.log(result);
-    };
     getData();
   }, []);
 
@@ -135,16 +138,23 @@ const Dashboard = () => {
         {data.map((item, index) => (
           <div key={index} className="bg-white shadow-lg rounded-lg ">
             <div
-              className="mb-4 border-b-2 py-3 px-3 rounded-t-lg"
+              className="mb-4 border-b-2 py-3 px-3 rounded-t-lg flex justify-between items-center"
               style={{
                 background:
                   "linear-gradient(93deg, rgba(16,120,56,1) 0%, rgba(84,165,62,1) 100%)",
               }}
             >
-              <h3 className="text-xl font-semibold text-white ">
+              <h3 className="text-xl sm:text-2xl font-semibold text-white">
                 {item.title}
               </h3>
+              {item.title === "Materials Collected" && (
+                <EditIcon
+                  onClick={() => setOpenEditMaterial(true)}
+                  className="ml-2 text-white text-lg sm:text-xl cursor-pointer hover:text-gray-200 transition-colors duration-200"
+                />
+              )}
             </div>
+
             {item.materials ? (
               <div className="px-4 py-5 grid grid-cols-3 gap-4">
                 {item.materials.map((material, idx) => (
@@ -202,6 +212,17 @@ const Dashboard = () => {
           </div>
         ))}
       </div>
+      {openEditMaterial && (
+        <EditMaterialForm
+          open={openEditMaterial}
+          onClose={() => setOpenEditMaterial(false)}
+          onSubmit={(data) => {
+            console.log("Updated Materials:", data);
+            // Update your materials state or trigger an API call as needed
+            getData();
+          }}
+        />
+      )}
     </div>
   );
 };

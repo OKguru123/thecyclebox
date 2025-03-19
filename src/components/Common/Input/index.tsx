@@ -5,7 +5,7 @@ interface IInput {
   label: string;
   className?: string;
   name: string;
-  readOnly?: boolean
+  readOnly?: boolean;
 }
 const Input = (props: IInput) => {
   const { value, onChange, error, label, className, name, readOnly } = props;
@@ -28,7 +28,9 @@ const Input = (props: IInput) => {
           {label}
         </label>
       </div>
-      {error && <p className="text-[red] ml-1 text-[9px] sm:text-[12px]">{error}</p>}
+      {error && (
+        <p className="text-[red] ml-1 text-[9px] sm:text-[12px]">{error}</p>
+      )}
     </>
   );
 };
