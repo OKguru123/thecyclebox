@@ -94,7 +94,7 @@ const Table: React.FC<TableProps> = ({
               {isLoading ? (
                 // Render Skeletons while loading
                 <table className="min-w-full border-collapse">
-                  <thead className="bg-gradient-to-r from-green-700 to-green-500 sticky top-5 z-30 ">
+                  <thead className="bg-gradient-to-r from-green-700 to-green-500 sticky  -top-1 z-1 ">
                     {" "}
                     <tr>
                       {columns &&
@@ -144,7 +144,7 @@ const Table: React.FC<TableProps> = ({
                 </table>
               ) : (
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gradient-to-r from-green-700 to-green-500 sticky top-0 z-1">
+                  <thead className="bg-gradient-to-r from-green-700 to-green-500 sticky z-1 -top-1 ">
                     <tr>
                       {columns &&
                         columns.map((column) => (

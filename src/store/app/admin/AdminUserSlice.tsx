@@ -40,7 +40,7 @@ export const getUsersApi = () => async (dispatch: AppDispatch) => {
   try {
     const response: any = await axiosGet(`${url.GET_USER}`);
     // Pass only serializable parts to the action
-    console.log("users data", response.data);
+    // console.log("users data", response.data);
     dispatch(
       getUsers({
         data: response.data,
@@ -73,7 +73,7 @@ export const updateUsersAdminApi =
     try {
       const response: any = await axiosPut(`${url.GET_USER}/${id}`, payload);
       // Pass only serializable parts to the action
-      console.log(response);
+      // console.log(response);
 
       dispatch(
         UpdateUsersAdmin({

@@ -10,9 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "The Box Cycle",
   description: "The Box Cycle",
-  // icons: {
-  //   icon: "/favicon.ico",
-  // },
+  
 };
 
 export default function RootLayout({

@@ -148,7 +148,7 @@ const UserFormDialog: React.FC<FormDialogProps> = ({
           phoneNumber: formData.phoneNumber,
           state: formData.state,
         };
-        console.log(Object);
+        // console.log(Object);
         const result = await dispatch(updateUsersAdminApi(Object, editdata.id));
         if (result.status === 200) {
           toast.success(result.message);
@@ -204,26 +204,6 @@ const UserFormDialog: React.FC<FormDialogProps> = ({
               error={errors.lastName}
             />
           </Grid>
-          <Grid item xs={12} className="h-20">
-            <Input
-              value={formData.email}
-              onChange={handleInputChange}
-              label="Email"
-              name="email"
-              className="bg-white"
-              error={errors.email}
-            />
-          </Grid>
-          <Grid item xs={12} className="h-20">
-            <Input
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              label="Mobile Number"
-              name="phoneNumber"
-              className="bg-white"
-              error={errors.phoneNumber}
-            />
-          </Grid>
           <Grid item xs={12} sm={6} className="h-20">
             <Dropdown
               options={roleOptions}
@@ -252,6 +232,27 @@ const UserFormDialog: React.FC<FormDialogProps> = ({
               error={errors.state}
             />
           </Grid>
+          <Grid item xs={12} className="h-20">
+            <Input
+              value={formData.email}
+              onChange={handleInputChange}
+              label="Email"
+              name="email"
+              className="bg-white"
+              error={errors.email}
+            />
+          </Grid>
+          <Grid item xs={12} className="h-20">
+            <Input
+              value={formData.phoneNumber}
+              onChange={handleInputChange}
+              label="Mobile Number"
+              name="phoneNumber"
+              className="bg-white"
+              error={errors.phoneNumber}
+            />
+          </Grid>
+
           {/* if()
 
           <div className="h-16 invisible">invisible</div> */}

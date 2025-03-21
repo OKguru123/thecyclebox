@@ -29,17 +29,17 @@ const UserForm = ({ changeMode }: { changeMode: (email: string) => void }) => {
   });
   const validatePassword = (password: any) => {
     if (!password) {
-      return 'Password is required';
+      return "Password is required";
     } else if (password.length < 6) {
-      return 'Password must be at least 6 characters long';
+      return "Password must be at least 6 characters long";
     } else if (!/[A-Z]/.test(password)) {
-      return 'Password must contain at least one uppercase letter';
+      return "Password must contain at least one uppercase letter";
     } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-      return 'Password must contain at least one special character';
+      return "Password must contain at least one special character";
     } else if (!/[0-9]/.test(password)) {
-      return 'Password must contain at least one number';
+      return "Password must contain at least one number";
     }
-    return ''; // No errors
+    return ""; // No errors
   };
 
   const submit = async () => {
@@ -90,7 +90,8 @@ const UserForm = ({ changeMode }: { changeMode: (email: string) => void }) => {
         const activeElement = document.activeElement as HTMLElement;
         if (
           activeElement &&
-          (activeElement.tagName === "INPUT" || activeElement.tagName === "PASSWORD")
+          (activeElement.tagName === "INPUT" ||
+            activeElement.tagName === "PASSWORD")
         ) {
           submit();
         }
@@ -217,15 +218,18 @@ const UserForm = ({ changeMode }: { changeMode: (email: string) => void }) => {
         onClick={submit}
         disabled={disabled}
       >
-        {disabled ? <CircularProgress size={23} className="!text-white" /> : "Sign Up"}
+        {disabled ? (
+          <CircularProgress size={23} className="!text-white" />
+        ) : (
+          "Sign Up"
+        )}
       </CommonButton>
-      <p className="text-center text-[12px] sm:text-[15px] xl:text-[17px]">
+      <p className="text-center text-[12px] sm:text-[15px] xl:text-[17px] font-inter">
         Already have an account?{" "}
         <Link href={"/"} className="text-[#000000] font-semibold">
           Login
         </Link>
       </p>
-      <ToastContainer />
     </div>
   );
 };

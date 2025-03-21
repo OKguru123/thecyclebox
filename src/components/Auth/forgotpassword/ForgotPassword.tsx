@@ -63,10 +63,10 @@ const ForgotePassword = ({ setEmail, email, setMode }: VerifyProps) => {
         />
       </div>
       {/* <div className="w-1/2"> */}
-      <h1 className="text-[20px] md:text-[24px] xl:text-[32px] font-medium text-center ">
+      <h1 className="text-[20px] md:text-[24px] xl:text-[32px] font-medium text-center text-[#089448]">
         Forgot Password
       </h1>
-      <p className="text-center mb-6 lg:mb-2 xl:mb-10 font-normal text-[11px] sm:text-[14px] xl:text-[16px]">
+      <p className="text-center mb-6 lg:mb-2 xl:mb-10 font-normal text-[11px] sm:text-[14px] xl:text-[16px] font-inter">
         Enter your email address and we’ll send you a code to reset your
         password
       </p>

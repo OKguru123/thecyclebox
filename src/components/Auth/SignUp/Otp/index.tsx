@@ -47,7 +47,6 @@ const OtpVerify = ({ email }: { email: string }) => {
     setDisabled(true);
     const result = await otpVerify({ otp: otp, email: email });
     if (result.status === 200) {
-
       setDisabled(false);
       localStorage.setItem("token", result.body.token);
       localStorage.setItem("userInfo", JSON.stringify(result.body.user));
@@ -71,12 +70,12 @@ const OtpVerify = ({ email }: { email: string }) => {
             className="!w-[50%] md:max-w-[100%]"
           />
         </div>
-        <h1 className="text-[24px] md:text-[28px] xl:text-[32px] font-medium text-center">
+        <h1 className="text-[24px] md:text-[28px] xl:text-[32px] font-medium text-center text-[#089448]">
           Verify OTP
         </h1>
-        <p className="text-center mb-6 lg:mb-2 xl:mb-10 text-[14px] xl:text-[13px] font-medium">
-          An OTP has been sent to your Email Address with a code of 6 numbers to
-          confirm your account.
+        <p className="text-center mb-6 lg:mb-2 xl:mb-10 text-[14px] xl:text-[13px] font-inter">
+          An OTP has been sent to your email address with a code of 6 numbers to
+          activate your account.
         </p>
         <div className="input-group relative mb-4 otp-input flex justify-evenly mt-5">
           <OTPInput
@@ -91,7 +90,7 @@ const OtpVerify = ({ email }: { email: string }) => {
         </div>
         <div className="flex">
           <div className="w-[95%]">
-            <p className="mb-[30px] sm:text[10] text-[12px]">
+            <p className="mb-[30px] sm:text[10] text-[12px] font-inter">
               Didn’t get it?{" "}
               <a
                 href="#"
@@ -105,8 +104,9 @@ const OtpVerify = ({ email }: { email: string }) => {
           <div>
             <p className="mb-[30px] sm:text[10] text-[16px] font-[700]">
               {time !== 0
-                ? `${Math.floor(time / 60)}:${time % 60 < 10 ? "0" : ""}${time % 60
-                }`
+                ? `${Math.floor(time / 60)}:${time % 60 < 10 ? "0" : ""}${
+                    time % 60
+                  }`
                 : "0:00 "}
             </p>
           </div>
@@ -117,16 +117,19 @@ const OtpVerify = ({ email }: { email: string }) => {
           disabled={otp.length < 4 || disabled}
           onClick={submit}
         >
-          {disabled ? <CircularProgress size={23} className="!text-white" /> : "Verify"}
+          {disabled ? (
+            <CircularProgress size={23} className="!text-white" />
+          ) : (
+            "Verify"
+          )}
         </CommonButton>
-        <p className="text-center text-[12px] sm:text-[15px] xl:text-[17px]">
+        <p className="text-center text-[12px] sm:text-[15px] xl:text-[17px] font-inter">
           Already have an account?{" "}
-          <Link href={"/"} className="text-[#000000] font-semibold">
+          <Link href={"/login"} className="text-[#000000] font-semibold">
             Login
           </Link>
         </p>
       </div>
-      <ToastContainer />
     </div>
   );
 };

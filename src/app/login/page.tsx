@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import leftImg from "../../assets/images/left.png";
 import logoImg from "../../assets/images/logo.png";
@@ -92,7 +92,7 @@ const Login = () => {
             <h1 className="text-[24px] md:text-[28px] xl:text-[32px] font-medium text-center  w-full text-[#089448]">
               Login
             </h1>
-            <p className="text-center mb-6 lg:mb-2 xl:mb-10 font-light text-[14px] xl:text-[16px]">
+            <p className="text-center mb-6 lg:mb-2 xl:mb-10 font-inter text-[14px] xl:text-[16px]">
               Please login to continue to your account
             </p>
             <div className="h-16 mb-[1.2rem]">
@@ -152,7 +152,7 @@ const Login = () => {
             >
               Login with OTP
             </CommonButton>
-            <p className="text-center text-[11px] sm:text-[15px] xl:text-[17px]">
+            <p className="text-center text-[11px] sm:text-[15px] xl:text-[17px] font-inter">
               {" Don't have an account yet? "}
               <Link href={"/signup"} className="text-[#000000] font-semibold">
                 Sign Up
@@ -161,7 +161,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

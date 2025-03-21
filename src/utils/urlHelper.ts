@@ -12,5 +12,4 @@ export const PUT_MACHINE = `${BASE_URL}machine`;
 export const GET_CREDIT_COUNT = `${BASE_URL}credit/count`;
 export const POST_DEDUCT_COUNT = `${BASE_URL}credit/deduct`;
 export const GET_MACHINE_USER = `${BASE_URL}machine/list?limit=10&&page=1`;
-
-
+export const POST_EditMaterial = `${BASE_URL}material-details`;

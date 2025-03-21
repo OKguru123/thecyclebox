@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 const ProfilePage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [id, setId] = useState('');
+  const [id, setId] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [btnDisable, setBtnDisable] = useState(false);
   const [errors, setErrors] = useState({
@@ -128,23 +128,33 @@ const ProfilePage = () => {
 
   const getInitials = () => {
     const { firstName, lastName } = profileData;
-    return `${firstName.charAt(0).toUpperCase()}${lastName.charAt(0).toUpperCase()}`;
+    return `${firstName.charAt(0).toUpperCase()}${lastName
+      .charAt(0)
+      .toUpperCase()}`;
   };
 
   const imgUrl = `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}user-image/`;
-  const profileImageUrl = profileData.profileImage ? URL.createObjectURL(profileData.profileImage) : profileData.storedImage.length > 1 ? imgUrl + profileData.storedImage : null;
-
+  const profileImageUrl = profileData.profileImage
+    ? URL.createObjectURL(profileData.profileImage)
+    : profileData.storedImage.length > 1
+    ? imgUrl + profileData.storedImage
+    : null;
 
   return (
     <>
       <div className="mb-6">
-        <button onClick={() => router.back()} className="flex items-center gap-2 self-start text-gray-700 hover:text-green-600 mb-6">
+        <button
+          onClick={() => router.back()}
+          className="flex items-center gap-2 self-start text-gray-700 hover:text-green-600 mb-6"
+        >
           <Image src={backArrow} alt="Back" className="w-6 h-6" />
           <h4 className="text-xl sm:text-2xl font-medium">Back</h4>
         </button>
-
       </div>
-      <div className="max-w-5xl mx-auto bg-white rounded-xl  overflow-hidden p-8 " style={{ boxShadow: "-4px 4px 25px 0px #00000040" }}>
+      <div
+        className="max-w-5xl mx-auto bg-white rounded-xl  overflow-hidden p-8 "
+        style={{ boxShadow: "-4px 4px 25px 0px #00000040" }}
+      >
         <h1 className="text-2xl sm:text-3xl font-bold mb-4  sm:mb-12 text-start sm:text-center">
           Profile
         </h1>
@@ -162,7 +172,6 @@ const ProfilePage = () => {
                     className="rounded-full w-full h-full  object-cover shadow-md"
                   />
                 </div>
-
               ) : (
                 <div className="flex items-center justify-center bg-[#006838] text-white rounded-full w-36 h-36 text-3xl font-semibold shadow-md">
                   {getInitials()}
@@ -192,8 +201,11 @@ const ProfilePage = () => {
             <div className="flex flex-col gap-4 w-full px-4">
               <CommonButton
                 onClick={handleEditClick}
-                className={`${isEditing ? "bg-red-500 hover:bg-red-700" : "bg-green-700 hover:bg-green-800"
-                  } text-white w-full py-2 rounded-lg shadow-md`}
+                className={`${
+                  isEditing
+                    ? "bg-red-500 hover:bg-red-700"
+                    : "bg-green-700 hover:bg-green-800"
+                } text-white w-full py-2 rounded-lg shadow-md`}
               >
                 {isEditing ? "Cancel" : "Edit"}
               </CommonButton>
@@ -218,7 +230,9 @@ const ProfilePage = () => {
                 error={errors.firstName}
                 label="First Name"
                 name="firstName"
-                className={isEditing ? "border-gray-300" : "bg-gray-100 border-gray-200"}
+                className={
+                  isEditing ? "border-gray-300" : "bg-gray-100 border-gray-200"
+                }
                 readOnly={!isEditing}
               />
             </div>
@@ -229,7 +243,9 @@ const ProfilePage = () => {
                 error={errors.lastName}
                 label="Last Name"
                 name="lastName"
-                className={isEditing ? "border-gray-300" : "bg-gray-100 border-gray-200"}
+                className={
+                  isEditing ? "border-gray-300" : "bg-gray-100 border-gray-200"
+                }
                 readOnly={!isEditing}
               />
             </div>
@@ -240,7 +256,9 @@ const ProfilePage = () => {
                 error={errors.email}
                 label="Email"
                 name="email"
-                className={isEditing ? "border-gray-300" : "bg-gray-100 border-gray-200"}
+                className={
+                  isEditing ? "border-gray-300" : "bg-gray-100 border-gray-200"
+                }
                 readOnly={!isEditing}
               />
             </div>
@@ -251,13 +269,12 @@ const ProfilePage = () => {
                 error={false}
                 label="Phone Number"
                 name="phoneNumber"
-                className={isEditing ? "border-gray-300" : "bg-gray-100 border-gray-200"}
+                className={
+                  isEditing ? "border-gray-300" : "bg-gray-100 border-gray-200"
+                }
                 readOnly={!isEditing}
               />
             </div>
-
-
-
           </div>
         </div>
       </div>

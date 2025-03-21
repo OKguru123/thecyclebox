@@ -41,9 +41,8 @@ const Dashboard = () => {
   const [openEditMaterial, setOpenEditMaterial] = useState(false);
   const getData = async () => {
     const result = await dispatch(getItemsApi());
-    console.log(result, "item, at the dashbord useeffect");
+
     setItems(result);
-    console.log(result);
   };
   useEffect(() => {
     getData();
@@ -217,10 +216,16 @@ const Dashboard = () => {
           open={openEditMaterial}
           onClose={() => setOpenEditMaterial(false)}
           onSubmit={(data) => {
-            console.log("Updated Materials:", data);
+            // console.log("Updated Materials:", data);
             // Update your materials state or trigger an API call as needed
             getData();
           }}
+          // totalRecycledBottle={items?.materialTotal}
+          // existingMaterials={{
+          //   aluminum: items?.materialaluminium,
+          //   plastic: items?.materialPlastic,
+          //   glass: items?.materialGlass,
+          // }}
         />
       )}
     </div>

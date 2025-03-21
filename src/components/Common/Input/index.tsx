@@ -23,7 +23,7 @@ const Input = (props: IInput) => {
         />
         <label
           htmlFor="email"
-          className="absolute left-3 top-2 transform -translate-y-1/2 bg-white px-1 text-gray-500 transition-all duration-200 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-green-700 font-light text-[14px] sm:text-[1rem]"
+          className="absolute left-3 top-2 transform -translate-y-1/2 bg-white px-1 text-gray-500 transition-all duration-200 ease-in-out peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-green-700 font-light text-[14px] sm:text-[1rem] font-inter"
         >
           {label}
         </label>

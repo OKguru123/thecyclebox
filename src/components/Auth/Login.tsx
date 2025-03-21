@@ -75,10 +75,10 @@ const Login = ({ setEmail, email, setMode }: VerifyProps) => {
           className="!w-[50%] md:max-w-[100%]"
         />
       </div>
-      <h1 className="text-[24px] md:text-[28px] xl:text-[32px] font-medium text-center text-[#089448]">
+      <h1 className="text-[24px] md:text-[28px] xl:text-[35px] font-medium text-center text-[#089448]">
         Login
       </h1>
-      <p className="text-center mb-5 lg:mb-6 xl:mb-10 font-light text-[14px] xl:text-[16px]">
+      <p className="text-center mb-5 lg:mb-6 xl:mb-10  text-[15px] xl:text-[16px] font-inter ">
         Please login to continue to your account
       </p>
       <div className="mb-1 xl:mb-3 sm:h-20 h-16">
@@ -125,7 +125,7 @@ const Login = ({ setEmail, email, setMode }: VerifyProps) => {
       >
         {"Login with Email and Password"}
       </CommonButton>
-      <p className="text-center text-[12px] sm:text-[15px] xl:text-[17px]">
+      <p className="text-center text-[12px] sm:text-[15px] xl:text-[17px] font-inter">
         {" Don't have an account yet? "}
         <Link href={"/signup"} className="text-[#000000] font-semibold">
           Sign Up

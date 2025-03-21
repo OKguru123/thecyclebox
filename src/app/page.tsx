@@ -1,10 +1,8 @@
 "use client";
 import Login from "@/components/Auth/Login";
 import Otp from "@/components/Auth/SignUp/Otp";
-import { loginApi } from "@/utils/api";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import leftImg from "../assets/images/left.png";
 import Image from "next/image";
@@ -34,10 +32,13 @@ export default function Home() {
           <Image src={leftImg} className="object-cover" alt="Globe side" />
         </div>
         <div className="flex-1 flex items-center justify-center md:w-82% w-[100%]">
-          {mode ? <Login setEmail={setEmail} setMode={setMode} email={email} /> : <Otp email={email} />}
+          {mode ? (
+            <Login setEmail={setEmail} setMode={setMode} email={email} />
+          ) : (
+            <Otp email={email} />
+          )}
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 }

@@ -63,7 +63,7 @@ const Users = () => {
             ele.state === "Active" ? (
               <span className="text-[#22c55e]"> Active</span>
             ) : (
-              <span className="text-[red]"> InActive</span>
+              <span className="text-[red]"> Inactive</span>
             ),
         };
       });
@@ -80,7 +80,7 @@ const Users = () => {
     setEditdata({});
   };
   const handleDelete = async (id: string | undefined) => {
-    console.log(id);
+    // console.log(id);
 
     const result = await dispatch(deleteUserApi(id));
     if (result.status === 200) {

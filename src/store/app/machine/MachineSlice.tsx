@@ -8,7 +8,7 @@ const initialState: any = {
   addmachines: {},
   updatedMachines: {},
   machineData: [],
-  scanData: []
+  scanData: [],
 };
 
 export const MachineSlice = createSlice({
@@ -16,39 +16,44 @@ export const MachineSlice = createSlice({
   initialState,
   reducers: {
     getMachines: (state: any, action) => {
-      state.data = action.payload.data
+      state.data = action.payload.data;
     },
     AddMachines: (state: any, action) => {
-      state.addmachines = action.payload.data
+      state.addmachines = action.payload.data;
     },
     UpdatedMachines: (state: any, action) => {
-      state.updatedMachines = action.payload.data
+      state.updatedMachines = action.payload.data;
     },
     getUserMachines: (state: any, action) => {
-      state.machineData = action.payload.data
+      state.machineData = action.payload.data;
     },
     getScanedQR: (state: any, action) => {
-      state.scanData = action.payload.data
-    }
+      state.scanData = action.payload.data;
+    },
   },
 });
 
-export const { getMachines, AddMachines, getUserMachines, UpdatedMachines, getScanedQR } = MachineSlice.actions;
+export const {
+  getMachines,
+  AddMachines,
+  getUserMachines,
+  UpdatedMachines,
+  getScanedQR,
+} = MachineSlice.actions;
 
-export const getMachinesApi =
-  () => async (dispatch: AppDispatch) => {
-    try {
-      const response: any = await axiosGet(`${url.GET_MACHINE}`);
-      // Pass only serializable parts to the action
-      dispatch(
-        getMachines({
-          data: response.data.body,
-        })
-      );
-    } catch (error: any) {
-      console.log(error);
-    }
-  };
+export const getMachinesApi = () => async (dispatch: AppDispatch) => {
+  try {
+    const response: any = await axiosGet(`${url.GET_MACHINE}`);
+    // Pass only serializable parts to the action
+    dispatch(
+      getMachines({
+        data: response.data.body,
+      })
+    );
+  } catch (error: any) {
+    console.log(error);
+  }
+};
 
 export const postMachinesApi =
   (payload: any) => async (dispatch: AppDispatch) => {
@@ -60,41 +65,42 @@ export const postMachinesApi =
           data: response.data,
         })
       );
-      return response.data
+      return response.data;
     } catch (error: any) {
       console.log(error);
     }
   };
 
-export const postScanApi =
-  (payload: any) => async (dispatch: AppDispatch) => {
-    try {
-      const response: any = await axiosPost(`${url.POST_SCAN}`, payload);
-      // Pass only serializable parts to the action
-      dispatch(
-        getScanedQR({
-          data: response.data,
-        })
-      );
-      return response.data
-    } catch (error: any) {
-      console.log(error);
-    }
-  };
+export const postScanApi = (payload: any) => async (dispatch: AppDispatch) => {
+  try {
+    const response: any = await axiosPost(`${url.POST_SCAN}`, payload);
+    // Pass only serializable parts to the action
+    dispatch(
+      getScanedQR({
+        data: response.data,
+      })
+    );
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
 
 export const putMachinesApi =
   (payload: any, id: string) => async (dispatch: AppDispatch) => {
     try {
-      const response: any = await axiosPut(`${url.POST_MACHINE}/${id}`, payload);
+      const response: any = await axiosPut(
+        `${url.POST_MACHINE}/${id}`,
+        payload
+      );
       // Pass only serializable parts to the action
 
       dispatch(
         UpdatedMachines({
           data: response.data,
         })
-
       );
-      return response.data
+      return response.data;
     } catch (error: any) {
       console.log(error);
     }
@@ -105,14 +111,14 @@ export const deleteMachinesApi =
     try {
       const response: any = await axiosDelete(`${url.POST_MACHINE}/${id}`);
       // Pass only serializable parts to the action
-      console.log(response, "papa");
+      // console.log(response, "papa");
 
       // dispatch(
       //   UpdatedMachines({
       //     data: response.data,
       //   })
       // );
-      return response.data
+      return response.data;
     } catch (error: any) {
       console.log(error);
     }
